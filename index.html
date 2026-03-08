@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Women's Day</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* phone frame */
+
+        .phone {
+            width: 360px;
+            height: 640px;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        /* background */
+
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url("background.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* dark overlay */
+
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        /* content */
+
+        .content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+            color: white;
+        }
+
+        /* title */
+
+        h1 {
+            font-size: clamp(18px, 4vw, 22px);
+            font-weight: 600;
+            margin-bottom: 18px;
+            white-space: nowrap;
+        }
+
+        /* message */
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* keep each sentence on one line */
+
+        .line {
+            white-space: nowrap;
+        }
+
+        /* button */
+
+        button {
+            margin-top: 20px;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 30px;
+            background: #ff4d6d;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        button:hover {
+            background: #ff1f4b;
+            transform: scale(1.05);
+        }
+
+        /* sakura */
+
+        .sakura {
+            position: absolute;
+            top: -50px;
+            font-size: 22px;
+            animation: fall linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="phone">
+
+        <div class="background"></div>
+
+        <div class="overlay"></div>
+
+        <audio id="music" loop>
+            <source
+                src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5b6c8a5c43.mp3?filename=romantic-background-112199.mp3">
+        </audio>
+
+        <div class="content">
+
+            <h1>Happy em pé's Day 🌸</h1>
+
+            <p>
+                <span class="line">Chúc pé Kim Ngộc một ngày 8/3 vui vẻ.</span><br>
+                <span class="line">Cám ơn vì được làm ngoại lệ của em :3 ❤️</span>
+            </p>
+
+            <button onclick="love()">Choạm vào đây =))))</button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function love() {
+
+            alert("Love you 3000 ❤️");
+
+            document.getElementById("music").play();
+
+        }
+
+        function createSakura() {
+
+            const sakura = document.createElement("div");
+
+            sakura.classList.add("sakura");
+
+            sakura.innerHTML = "🌸";
+
+            sakura.style.left = Math.random() * 360 + "px";
+
+            sakura.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+            document.querySelector(".phone").appendChild(sakura);
+
+            setTimeout(() => {
+
+                sakura.remove();
+
+            }, 10000);
+
+        }
+
+        setInterval(createSakura, 250);
+
+    </script>
+
+</body>
+
+</html>
